@@ -1,6 +1,7 @@
 package com.myshequ.smsrecharge.util
 
 import android.content.Context
+import com.myshequ.smsrecharge.R
 import com.myshequ.smsrecharge.data.TradeMode
 
 /**
@@ -36,24 +37,24 @@ object SmsParser {
 
     fun parse(context: Context, content: String, source: String, notifyType: Int): ParseResult {
         if (content.isBlank()) {
-            return ParseResult(matched = false, reason = "消息内容为空")
+            return ParseResult(matched = false, reason = context.getString(R.string.parse_reason_empty_content))
         }
 
         val modes = AppSettings.getTradeModes(context).filter { it.notifyType == notifyType }
         if (modes.isEmpty()) {
-            return ParseResult(matched = false, reason = "未配置交易模式（notify_type=$notifyType）")
+            return ParseResult(matched = false, reason = context.getString(R.string.parse_reason_no_modes, notifyType))
         }
 
         val skipReasons = mutableListOf<String>()
         for (mode in modes) {
-            val label = mode.name.ifBlank { "未命名模式" }
+            val label = mode.name.ifBlank { context.getString(R.string.parse_mode_unnamed) }
 
             if (!isSourceMatch(mode.tradeInfoSource, source)) {
-                skipReasons += "[$label]来源不匹配"
+                skipReasons += context.getString(R.string.parse_skip_source, label)
                 continue
             }
 
-            val judgeFailReason = checkTradeJudge(mode.tradeJudgeRule, content)
+            val judgeFailReason = checkTradeJudge(context, mode.tradeJudgeRule, content)
             if (judgeFailReason != null) {
                 skipReasons += "[$label]$judgeFailReason"
                 continue
@@ -69,7 +70,7 @@ object SmsParser {
                     parsed = false,
                     modeName = label,
                     money = money,
-                    reason = "命中模式[$label]，但未提取出交易号"
+                    reason = context.getString(R.string.parse_matched_no_order, label)
                 )
             }
 
@@ -92,11 +93,17 @@ object SmsParser {
                 parsed = false,
                 modeName = label,
                 money = money,
-                reason = "命中模式[$label]，但未提取出充值卡号"
+                reason = context.getString(R.string.parse_matched_no_card, label)
             )
         }
 
-        return ParseResult(matched = false, reason = "所有交易模式均未命中：${skipReasons.joinToString("；")}")
+        return ParseResult(
+            matched = false,
+            reason = context.getString(
+                R.string.parse_all_unmatched,
+                skipReasons.joinToString("; ")
+            )
+        )
     }
 
     /**
@@ -112,12 +119,13 @@ object SmsParser {
     /**
      * 交易信息判定：返回 null 表示通过，否则返回未通过的原因。
      */
-    private fun checkTradeJudge(rule: String, content: String): String? {
+    private fun checkTradeJudge(context: Context, rule: String, content: String): String? {
         if (rule.isBlank()) return null
         return try {
-            if (Regex(rule).containsMatchIn(content)) null else "未通过交易信息判定"
+            if (Regex(rule).containsMatchIn(content)) null
+            else context.getString(R.string.parse_judge_not_matched)
         } catch (_: Exception) {
-            "交易信息判定规则无效"
+            context.getString(R.string.parse_judge_invalid)
         }
     }
 

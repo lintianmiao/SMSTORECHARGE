@@ -15,7 +15,7 @@ import java.util.Locale
 class RecordDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecordDetailBinding
-    private val timeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)
+    private val timeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,9 +56,9 @@ class RecordDetailActivity : AppCompatActivity() {
         binding.tvMessageSource.text = getString(R.string.label_message_source, sourceText)
         binding.tvMessageType.text = getString(R.string.label_message_type, messageTypeText)
         binding.tvPhone.text = getString(R.string.label_phone, record.senderAddress)
-        binding.tvOrderNo.text = getString(R.string.label_order_no, record.orderNo.ifBlank { "未解析" })
-        binding.tvCardNo.text = getString(R.string.label_card_no, record.cardNo.ifBlank { "未生成" })
-        binding.tvMoney.text = getString(R.string.label_money, record.money.ifBlank { "未解析" })
+        binding.tvOrderNo.text = getString(R.string.label_order_no, record.orderNo.ifBlank { getString(R.string.value_not_parsed) })
+        binding.tvCardNo.text = getString(R.string.label_card_no, record.cardNo.ifBlank { getString(R.string.value_not_generated) })
+        binding.tvMoney.text = getString(R.string.label_money, record.money.ifBlank { getString(R.string.value_not_parsed) })
         binding.tvStatus.text = when (record.status) {
             SmsRecord.STATUS_SUCCESS -> getString(R.string.label_status_success)
             SmsRecord.STATUS_FAIL -> getString(R.string.label_status_fail)

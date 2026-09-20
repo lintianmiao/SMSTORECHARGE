@@ -1,5 +1,7 @@
 package com.myshequ.smsrecharge.network
 
+import android.content.Context
+import com.myshequ.smsrecharge.R
 import com.myshequ.smsrecharge.data.TradeMode
 import okhttp3.ResponseBody
 import org.json.JSONObject
@@ -28,12 +30,12 @@ data class TradeModePayload(
 
 object RechargeResultParser {
 
-    fun parse(response: Response<ResponseBody>): RechargeResult {
+    fun parse(context: Context, response: Response<ResponseBody>): RechargeResult {
         val httpOk = response.isSuccessful
         val rawBody = try {
             response.body()?.string() ?: response.errorBody()?.string() ?: ""
         } catch (e: Exception) {
-            "读取响应内容失败：${e.message}"
+            context.getString(R.string.error_read_body_failed, e.message ?: "")
         }
 
         if (rawBody.isBlank()) {
@@ -57,8 +59,8 @@ object RechargeResultParser {
         }
     }
 
-    fun ofException(e: Exception): RechargeResult =
-        RechargeResult(success = false, message = "请求异常：${e.message}", rawResponse = "")
+    fun ofException(context: Context, e: Exception): RechargeResult =
+        RechargeResult(success = false, message = context.getString(R.string.error_request_exception, e.message ?: ""), rawResponse = "")
 
     /**
      * 从设备号校验接口的原始返回中解析交易模式信息（seller_id + list）。

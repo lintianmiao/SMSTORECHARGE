@@ -82,9 +82,9 @@ class SmsProcessWorker(appContext: Context, params: WorkerParameters) :
                 money = money,
                 deviceId = deviceId
             )
-            RechargeResultParser.parse(response)
+            RechargeResultParser.parse(applicationContext, response)
         } catch (e: Exception) {
-            RechargeResultParser.ofException(e)
+            RechargeResultParser.ofException(applicationContext, e)
         }
 
         val saved = dao.getById(id)

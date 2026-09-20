@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SMS Recharge Card Assistant</string>
+    <string name="settings_title">解析规则设置</string>
+    <string name="record_detail_title">记录详情</string>
+    <string name="device_id_title">设备号验证</string>
+
+    <!-- DeviceIdActivity -->
+    <string name="device_id_tip">首次使用本 APP 前请先验证设备号</string>
+    <string name="device_id_input_label">设备号</string>
+    <string name="device_id_hint">请输入设备号</string>
+    <string name="device_id_empty_tip">设备号不能为空</string>
+    <string name="device_id_check_success">设备号验证成功</string>
+    <string name="device_id_check_failed_default">设备号验证失败，请检查后重试</string>
+    <string name="btn_check_device_id">验证并保存</string>
+
+    <!-- MainActivity -->
+    <string name="action_settings">设置</string>
+    <string name="action_clear_messages">清除消息</string>
+    <string name="action_language">语言</string>
+    <string name="language_dialog_title">选择语言</string>
+    <string name="language_system_default">跟随系统</string>
+    <string name="clear_messages_dialog_title">清除消息</string>
+    <string name="clear_messages_dialog_message">请输入要清除的消息距今天数</string>
+    <string name="clear_messages_days_hint">天数</string>
+    <string name="clear_messages_days_empty_tip">请输入大于 0 的有效天数</string>
+    <string name="clear_messages_confirm">清除</string>
+    <string name="clear_messages_cancel">取消</string>
+    <string name="clear_messages_success">已清除 %1$d 条消息</string>
+    <string name="permission_sms_tip">自动识别短信需要“接收短信”和“读取短信”权限</string>
+    <string name="permission_notification_tip">APP 通知识别需要在系统设置中开启通知使用权权限</string>
+    <string name="grant_permission">授权短信</string>
+    <string name="grant_notification">授权通知</string>
+    <string name="settings_grant_sms_permission">授予短信权限</string>
+    <string name="filter_start_date">开始日期</string>
+    <string name="filter_end_date">结束日期</string>
+    <string name="btn_query">查询</string>
+    <string name="btn_query_all">查看全部</string>
+    <string name="empty_list_tip">暂无记录</string>
+    <string name="select_date">请选择日期</string>
+    <string name="total_records">共 %1$d 条记录</string>
+
+    <!-- item -->
+    <string name="label_time">时间：%1$s</string>
+    <string name="label_message_source">来源：%1$s</string>
+    <string name="label_message_type">类型：%1$s</string>
+    <string name="label_phone">发送方：%1$s</string>
+    <string name="label_order_no">交易号：%1$s</string>
+    <string name="label_card_no">充值卡号：%1$s</string>
+    <string name="label_money">金额：%1$s</string>
+    <string name="label_status_success">成功</string>
+    <string name="label_status_fail">失败</string>
+    <string name="label_status_pending">处理中</string>
+    <string name="label_status_unparsed">已保存未处理</string>
+
+    <!-- detail -->
+    <string name="detail_sms_content">消息内容</string>
+    <string name="detail_api_result">接口返回</string>
+    <string name="detail_retry">重试</string>
+
+    <!-- settings -->
+    <string name="settings_trade_modes_label">交易模式（由后台下发；点击模式查看详情）</string>
+    <string name="settings_trade_modes_empty">暂无交易模式，请重新绑定设备号以获取</string>
+    <string name="settings_mode_info_label">模式详情</string>
+    <string name="trade_mode_field_name">名称：%1$s</string>
+    <string name="trade_mode_field_notify_type">通知类型：%1$s</string>
+    <string name="trade_mode_field_source">信息来源：%1$s</string>
+    <string name="trade_mode_field_judge">交易信息判定规则：%1$s</string>
+    <string name="trade_mode_field_trade_no1">交易号解析规则 1：%1$s</string>
+    <string name="trade_mode_field_trade_no2">交易号解析规则 2：%1$s</string>
+    <string name="trade_mode_field_card_no1">充值卡号解析规则 1：%1$s</string>
+    <string name="trade_mode_field_card_no2">充值卡号解析规则 2：%1$s</string>
+    <string name="trade_mode_field_money1">金额解析规则 1：%1$s</string>
+    <string name="trade_mode_field_money2">金额解析规则 2：%1$s</string>
+    <string name="trade_mode_rule_empty">（未设置）</string>
+    <string name="trade_mode_unnamed">（未命名模式）</string>
+    <string name="settings_test_source_hint">来源：发送号码 / APP 名称 / 包名（可选）</string>
+    <string name="settings_device_id_label">当前设备号：%1$s</string>
+    <string name="settings_device_id_unbound">未绑定</string>
+    <string name="settings_rebind_device_id">重新绑定设备号</string>
+    <string name="settings_saved_tip">设置已保存</string>
+    <string name="settings_test_parse">测试解析</string>
+    <string name="settings_test_sms_hint">粘贴一条短信或 APP 通知内容进行测试</string>
+    <string name="settings_test_result">解析结果</string>
+    <string name="settings_open_notification_listener">打开通知使用权权限</string>
+    <string name="source_sms">短信</string>
+    <string name="source_app">APP 通知</string>
+    <string name="message_type_new">新消息</string>
+    <string name="message_type_duplicate_message">重复消息</string>
+    <string name="message_type_duplicate_order">重复交易号</string>
+
+    <!-- SettingsActivity test parse -->
+    <string name="test_result_matched_parsed">命中模式：%1$s；交易号：%2$s；充值卡号：%3$s；金额：%4$s；操作：保存记录并调用后台接口</string>
+    <string name="test_result_amount_absent">未提取到</string>
+    <string name="test_result_matched_unparsed">命中模式：%1$s，但未提取出交易号或充值卡号；原因：%2$s</string>
+    <string name="test_result_unmatched">未命中：%1$s</string>
+
+    <!-- SmsParser parse reasons -->
+    <string name="parse_reason_empty_content">消息内容为空</string>
+    <string name="parse_reason_no_modes">未配置交易模式（notify_type=%1$d）</string>
+    <string name="parse_mode_unnamed">未命名模式</string>
+    <string name="parse_skip_source">[%1$s]来源不匹配</string>
+    <string name="parse_matched_no_order">命中模式[%1$s]，但未提取出交易号</string>
+    <string name="parse_matched_no_card">命中模式[%1$s]，但未提取出充值卡号</string>
+    <string name="parse_all_unmatched">所有交易模式均未命中：%1$s</string>
+    <string name="parse_judge_not_matched">未通过交易信息判定</string>
+    <string name="parse_judge_invalid">交易信息判定规则无效</string>
+
+    <!-- Record placeholder values -->
+    <string name="value_not_parsed">未解析</string>
+    <string name="value_not_generated">未生成</string>
+
+    <!-- Network error messages -->
+    <string name="error_read_body_failed">读取响应内容失败：%1$s</string>
+    <string name="error_request_exception">请求异常：%1$s</string>
+</resources>

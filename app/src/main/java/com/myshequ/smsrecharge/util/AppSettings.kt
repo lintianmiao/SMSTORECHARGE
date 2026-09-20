@@ -16,6 +16,7 @@ object AppSettings {
     private const val KEY_DEVICE_ID = "device_id"
     private const val KEY_SELLER_ID = "seller_id"
     private const val KEY_TRADE_MODES = "trade_modes"
+    private const val KEY_APP_LANGUAGE = "app_language"
 
     const val DEFAULT_API_URL = "https://test.myshequ.cn:8445/otherService/smsToRechargeCard.do"
 
@@ -58,5 +59,15 @@ object AppSettings {
 
     fun setTradeModes(context: Context, modes: List<TradeMode>) {
         prefs(context).edit().putString(KEY_TRADE_MODES, TradeMode.listToJson(modes)).apply()
+    }
+
+    // 应用语言：用户在主界面或设备绑定页的语言菜单中选择后保存（选择逻辑见 LanguageHelper）。
+    // 返回 null 表示从未选择过（默认显示英文界面）；返回 "system" 表示跟随系统语言；
+    // 其他值为具体语言标签（zh/en/fr/es/pt）。
+    fun getAppLanguage(context: Context): String? =
+        prefs(context).getString(KEY_APP_LANGUAGE, null)
+
+    fun setAppLanguage(context: Context, languageTag: String) {
+        prefs(context).edit().putString(KEY_APP_LANGUAGE, languageTag).apply()
     }
 }

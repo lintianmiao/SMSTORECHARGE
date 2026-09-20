@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.myshequ.smsrecharge.R
 import com.myshequ.smsrecharge.databinding.ActivityMainBinding
 import com.myshequ.smsrecharge.util.AppSettings
+import com.myshequ.smsrecharge.util.LanguageHelper
 import java.util.Calendar
 import java.util.Locale
 
@@ -78,6 +79,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.action_clear_messages -> {
                     showClearMessagesDialog()
+                    true
+                }
+                R.id.action_language -> {
+                    LanguageHelper.showPicker(this)
                     true
                 }
                 else -> false
@@ -179,7 +184,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun formatDate(calendar: Calendar): String {
         return String.format(
-            Locale.CHINA, "%04d-%02d-%02d",
+            Locale.getDefault(), "%04d-%02d-%02d",
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH) + 1,
             calendar.get(Calendar.DAY_OF_MONTH)

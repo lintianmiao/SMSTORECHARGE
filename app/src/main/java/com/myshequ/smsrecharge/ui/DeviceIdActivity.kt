@@ -12,6 +12,7 @@ import com.myshequ.smsrecharge.databinding.ActivityDeviceIdBinding
 import com.myshequ.smsrecharge.network.RechargeResultParser
 import com.myshequ.smsrecharge.network.RetrofitClient
 import com.myshequ.smsrecharge.util.AppSettings
+import com.myshequ.smsrecharge.util.LanguageHelper
 import kotlinx.coroutines.launch
 
 /**
@@ -34,6 +35,11 @@ class DeviceIdActivity : AppCompatActivity() {
         binding.btnCheckDeviceId.setOnClickListener {
             hideKeyboard()
             checkAndSaveDeviceId()
+        }
+
+        // 首次打开 APP 默认显示英文界面，可在此选择其他语言（选择后立即生效）
+        binding.tvLanguage.setOnClickListener {
+            LanguageHelper.showPicker(this)
         }
 
         // 点击空白区域隐藏键盘
@@ -65,9 +71,9 @@ class DeviceIdActivity : AppCompatActivity() {
                     url = checkUrl,
                     deviceId = deviceId
                 )
-                RechargeResultParser.parse(response)
+                RechargeResultParser.parse(this@DeviceIdActivity, response)
             } catch (e: Exception) {
-                RechargeResultParser.ofException(e)
+                RechargeResultParser.ofException(this@DeviceIdActivity, e)
             }
 
             binding.btnCheckDeviceId.isEnabled = true

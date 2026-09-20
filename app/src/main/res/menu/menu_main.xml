@@ -11,4 +11,9 @@
         android:title="@string/action_settings"
         android:icon="@drawable/ic_settings"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_language"
+        android:title="@string/action_language"
+        android:icon="@drawable/ic_language"
+        app:showAsAction="never" />
 </menu>

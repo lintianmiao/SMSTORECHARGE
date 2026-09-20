@@ -16,7 +16,7 @@ import java.util.Locale
 class RecordAdapter(private val onItemClick: (SmsRecord) -> Unit) :
     ListAdapter<SmsRecord, RecordAdapter.RecordViewHolder>(DIFF_CALLBACK) {
 
-    private val timeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA)
+    private val timeFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): RecordViewHolder {
         val binding = ItemSmsRecordBinding.inflate(
@@ -47,9 +47,9 @@ class RecordAdapter(private val onItemClick: (SmsRecord) -> Unit) :
             binding.tvTime.text = context.getString(R.string.label_time, timeFormat.format(Date(record.receivedTime)))
             binding.tvMessageSource.text = context.getString(R.string.label_message_source, sourceText)
             binding.tvPhone.text = context.getString(R.string.label_phone, record.senderAddress)
-            binding.tvOrderNo.text = context.getString(R.string.label_order_no, record.orderNo.ifBlank { "未解析" })
-            binding.tvCardNo.text = context.getString(R.string.label_card_no, record.cardNo.ifBlank { "未生成" })
-            binding.tvMoney.text = context.getString(R.string.label_money, record.money.ifBlank { "未解析" })
+            binding.tvOrderNo.text = context.getString(R.string.label_order_no, record.orderNo.ifBlank { context.getString(R.string.value_not_parsed) })
+            binding.tvCardNo.text = context.getString(R.string.label_card_no, record.cardNo.ifBlank { context.getString(R.string.value_not_generated) })
+            binding.tvMoney.text = context.getString(R.string.label_money, record.money.ifBlank { context.getString(R.string.value_not_parsed) })
 
             when (record.status) {
                 SmsRecord.STATUS_SUCCESS -> {

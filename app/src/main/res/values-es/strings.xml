@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SMS Recharge Card Assistant</string>
+    <string name="settings_title">Ajustes de análisis</string>
+    <string name="record_detail_title">Detalle del registro</string>
+    <string name="device_id_title">Verificación del ID del dispositivo</string>
+
+    <!-- DeviceIdActivity -->
+    <string name="device_id_tip">Verifique el ID del dispositivo antes de usar esta aplicación por primera vez</string>
+    <string name="device_id_input_label">ID del dispositivo</string>
+    <string name="device_id_hint">Introduzca el ID del dispositivo</string>
+    <string name="device_id_empty_tip">El ID del dispositivo no puede estar vacío</string>
+    <string name="device_id_check_success">ID del dispositivo verificado correctamente</string>
+    <string name="device_id_check_failed_default">La verificación del ID del dispositivo falló, compruébelo e inténtelo de nuevo</string>
+    <string name="btn_check_device_id">Verificar y guardar</string>
+
+    <!-- MainActivity -->
+    <string name="action_settings">Ajustes</string>
+    <string name="action_clear_messages">Borrar mensajes</string>
+    <string name="action_language">Idioma</string>
+    <string name="language_dialog_title">Seleccionar idioma</string>
+    <string name="language_system_default">Idioma del sistema</string>
+    <string name="clear_messages_dialog_title">Borrar mensajes</string>
+    <string name="clear_messages_dialog_message">Introduzca de cuántos días atrás son los mensajes que se van a borrar</string>
+    <string name="clear_messages_days_hint">Días</string>
+    <string name="clear_messages_days_empty_tip">Introduzca un número de días válido mayor que 0</string>
+    <string name="clear_messages_confirm">Borrar</string>
+    <string name="clear_messages_cancel">Cancelar</string>
+    <string name="clear_messages_success">%1$d mensaje(s) borrado(s)</string>
+    <string name="permission_sms_tip">La aplicación necesita los permisos «Recibir SMS» y «Leer SMS» para detectar SMS automáticamente</string>
+    <string name="permission_notification_tip">La detección de notificaciones requiere activar el permiso de acceso a notificaciones en los ajustes</string>
+    <string name="grant_permission">Conceder SMS</string>
+    <string name="grant_notification">Conceder notificaciones</string>
+    <string name="settings_grant_sms_permission">Conceder permiso de SMS</string>
+    <string name="filter_start_date">Fecha de inicio</string>
+    <string name="filter_end_date">Fecha de fin</string>
+    <string name="btn_query">Consultar</string>
+    <string name="btn_query_all">Ver todo</string>
+    <string name="empty_list_tip">Sin registros</string>
+    <string name="select_date">Seleccionar fecha</string>
+    <string name="total_records">%1$d registro(s) en total</string>
+
+    <!-- item -->
+    <string name="label_time">Hora: %1$s</string>
+    <string name="label_message_source">Origen: %1$s</string>
+    <string name="label_message_type">Tipo: %1$s</string>
+    <string name="label_phone">Remitente: %1$s</string>
+    <string name="label_order_no">N.º de pedido: %1$s</string>
+    <string name="label_card_no">N.º de tarjeta: %1$s</string>
+    <string name="label_money">Importe: %1$s</string>
+    <string name="label_status_success">Correcto</string>
+    <string name="label_status_fail">Fallido</string>
+    <string name="label_status_pending">Procesando</string>
+    <string name="label_status_unparsed">Guardado, no procesado</string>
+
+    <!-- detail -->
+    <string name="detail_sms_content">Contenido del mensaje</string>
+    <string name="detail_api_result">Respuesta de la API</string>
+    <string name="detail_retry">Reintentar</string>
+
+    <!-- settings -->
+    <string name="settings_trade_modes_label">Modos de transacción (entregados por el servidor; toque un modo para ver sus detalles)</string>
+    <string name="settings_trade_modes_empty">Aún no hay modos de transacción, vuelva a vincular el ID del dispositivo para obtenerlos</string>
+    <string name="settings_mode_info_label">Detalles del modo</string>
+    <string name="trade_mode_field_name">Nombre: %1$s</string>
+    <string name="trade_mode_field_notify_type">Tipo de notificación: %1$s</string>
+    <string name="trade_mode_field_source">Origen de la información: %1$s</string>
+    <string name="trade_mode_field_judge">Regla de juicio: %1$s</string>
+    <string name="trade_mode_field_trade_no1">Regla de extracción del N.º de pedido 1: %1$s</string>
+    <string name="trade_mode_field_trade_no2">Regla de extracción del N.º de pedido 2: %1$s</string>
+    <string name="trade_mode_field_card_no1">Regla de extracción del N.º de tarjeta 1: %1$s</string>
+    <string name="trade_mode_field_card_no2">Regla de extracción del N.º de tarjeta 2: %1$s</string>
+    <string name="trade_mode_field_money1">Regla de extracción del importe 1: %1$s</string>
+    <string name="trade_mode_field_money2">Regla de extracción del importe 2: %1$s</string>
+    <string name="trade_mode_rule_empty">(sin configurar)</string>
+    <string name="trade_mode_unnamed">(Modo sin nombre)</string>
+    <string name="settings_test_source_hint">Origen: número del remitente / nombre de la aplicación / nombre del paquete (opcional)</string>
+    <string name="settings_device_id_label">ID del dispositivo actual: %1$s</string>
+    <string name="settings_device_id_unbound">No vinculado</string>
+    <string name="settings_rebind_device_id">Vincular de nuevo el ID del dispositivo</string>
+    <string name="settings_saved_tip">Ajustes guardados</string>
+    <string name="settings_test_parse">Probar análisis</string>
+    <string name="settings_test_sms_hint">Pegue un contenido de SMS o de notificación de aplicación para probar</string>
+    <string name="settings_test_result">Resultado del análisis</string>
+    <string name="settings_open_notification_listener">Abrir el permiso de acceso a notificaciones</string>
+    <string name="source_sms">SMS</string>
+    <string name="source_app">Notificación de aplicación</string>
+    <string name="message_type_new">Mensaje nuevo</string>
+    <string name="message_type_duplicate_message">Mensaje duplicado</string>
+    <string name="message_type_duplicate_order">N.º de pedido duplicado</string>
+
+    <!-- SettingsActivity test parse -->
+    <string name="test_result_matched_parsed">Modo coincidente: %1$s; N.º de pedido: %2$s; N.º de tarjeta: %3$s; Importe: %4$s; Acción: guardar el registro y llamar a la API del servidor</string>
+    <string name="test_result_amount_absent">no extraído</string>
+    <string name="test_result_matched_unparsed">Modo coincidente: %1$s, pero no se extrajo el N.º de pedido o el N.º de tarjeta; Motivo: %2$s</string>
+    <string name="test_result_unmatched">Sin coincidencia: %1$s</string>
+
+    <!-- SmsParser parse reasons -->
+    <string name="parse_reason_empty_content">El contenido del mensaje está vacío</string>
+    <string name="parse_reason_no_modes">No hay modos de transacción configurados (notify_type=%1$d)</string>
+    <string name="parse_mode_unnamed">Modo sin nombre</string>
+    <string name="parse_skip_source">[%1$s] Origen no coincidente</string>
+    <string name="parse_matched_no_order">Modo coincidente [%1$s], pero no se extrajo el N.º de pedido</string>
+    <string name="parse_matched_no_card">Modo coincidente [%1$s], pero no se extrajo el N.º de tarjeta</string>
+    <string name="parse_all_unmatched">Ningún modo de transacción coincidió: %1$s</string>
+    <string name="parse_judge_not_matched">Regla de juicio no satisfecha</string>
+    <string name="parse_judge_invalid">Regla de juicio no válida</string>
+
+    <!-- Record placeholder values -->
+    <string name="value_not_parsed">Sin analizar</string>
+    <string name="value_not_generated">Sin generar</string>
+
+    <!-- Network error messages -->
+    <string name="error_read_body_failed">Error al leer el cuerpo de la respuesta: %1$s</string>
+    <string name="error_request_exception">Error de solicitud: %1$s</string>
+</resources>

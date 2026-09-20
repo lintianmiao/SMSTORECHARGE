@@ -1,5 +1,6 @@
 package com.myshequ.smsrecharge.network
 
+import com.myshequ.smsrecharge.data.TradeMode
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Response
@@ -8,12 +9,21 @@ import retrofit2.Response
  * 后台返回结构以 return_code 字段为准：return_code 为 "SUCCESS" 时表示成功，否则为失败，
  * 错误提示信息优先取 return_message。为兼容未提前约定返回格式的接口，
  * 若未包含 return_code 字段，则降级尝试 success/code/status 等常见字段，再否则仅以 HTTP 状态码判断，
- * 原始内容始终保留供排查。checkDeviceId.do 和 smsToRechargeCard.do 均复用该解析逻辑。
+ * 原始内容始终保留供排查。checkDeviceIdValid.do 和 smsToRechargeCard.do 均复用该解析逻辑。
  */
 data class RechargeResult(
     val success: Boolean,
     val message: String,
     val rawResponse: String
+)
+
+/**
+ * 设备号校验接口返回中的交易模式信息：seller_id 与交易模式列表。
+ * modes 为 null 表示返回内容中未包含 list 字段（此时应保留本地已保存的交易模式）。
+ */
+data class TradeModePayload(
+    val sellerId: String,
+    val modes: List<TradeMode>?
 )
 
 object RechargeResultParser {
@@ -49,4 +59,21 @@ object RechargeResultParser {
 
     fun ofException(e: Exception): RechargeResult =
         RechargeResult(success = false, message = "请求异常：${e.message}", rawResponse = "")
+
+    /**
+     * 从设备号校验接口的原始返回中解析交易模式信息（seller_id + list）。
+     * 返回 null 表示返回内容不是有效 JSON。
+     */
+    fun parseTradeModes(rawResponse: String): TradeModePayload? {
+        if (rawResponse.isBlank()) return null
+        return try {
+            val json = JSONObject(rawResponse)
+            TradeModePayload(
+                sellerId = json.optString("seller_id"),
+                modes = json.optJSONArray("list")?.let { TradeMode.fromArray(it) }
+            )
+        } catch (_: Exception) {
+            null
+        }
+    }
 }

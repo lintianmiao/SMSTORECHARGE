@@ -56,18 +56,25 @@
     <string name="detail_retry">Retry</string>
 
     <!-- settings -->
-    <string name="settings_source_label">Source whitelist (separate multiple sources with commas; passes if SMS sender number, APP name or package name contains any of them; leave blank for no restriction)</string>
-    <string name="settings_keywords_label">Message content filter keywords (separate multiple keywords with commas; all must be present)</string>
-    <string name="settings_order_keyword_label">Order No. Keyword</string>
-    <string name="settings_order_length_label">Order No. Length</string>
-    <string name="settings_money_keyword_label">Amount keyword (extracts the number after the keyword, decimal point allowed)</string>
-    <string name="settings_api_url_label">Backend API URL</string>
-    <string name="settings_check_device_id_url_label">Device ID Verification API URL</string>
+    <string name="settings_trade_modes_label">Trade Modes (delivered by the backend; tap a mode to view its details)</string>
+    <string name="settings_trade_modes_empty">No trade modes yet, please rebind the device ID to fetch them</string>
+    <string name="settings_mode_info_label">Mode Details</string>
+    <string name="trade_mode_field_name">Name: %1$s</string>
+    <string name="trade_mode_field_notify_type">Notify Type: %1$s</string>
+    <string name="trade_mode_field_source">Trade Info Source: %1$s</string>
+    <string name="trade_mode_field_judge">Trade Judge Rule: %1$s</string>
+    <string name="trade_mode_field_trade_no1">Trade No. Parse Rule 1: %1$s</string>
+    <string name="trade_mode_field_trade_no2">Trade No. Parse Rule 2: %1$s</string>
+    <string name="trade_mode_field_card_no1">Card No. Parse Rule 1: %1$s</string>
+    <string name="trade_mode_field_card_no2">Card No. Parse Rule 2: %1$s</string>
+    <string name="trade_mode_field_money1">Amount Parse Rule 1: %1$s</string>
+    <string name="trade_mode_field_money2">Amount Parse Rule 2: %1$s</string>
+    <string name="trade_mode_rule_empty">(not set)</string>
+    <string name="trade_mode_unnamed">(Unnamed Mode)</string>
+    <string name="settings_test_source_hint">Source: sender number / app name / package name (optional)</string>
     <string name="settings_device_id_label">Current Device ID: %1$s</string>
     <string name="settings_device_id_unbound">Not bound</string>
     <string name="settings_rebind_device_id">Rebind Device ID</string>
-    <string name="settings_save">Save</string>
-    <string name="settings_reset_default">Reset to Default</string>
     <string name="settings_saved_tip">Settings saved</string>
     <string name="settings_test_parse">Test Parse</string>
     <string name="settings_test_sms_hint">Paste an SMS or APP notification content to test</string>
@@ -79,12 +86,9 @@
     <string name="message_type_duplicate_message">Duplicate Message</string>
     <string name="message_type_duplicate_order">Duplicate Order No.</string>
 
-    <!-- SettingsActivity test parse / validation -->
-    <string name="settings_order_keyword_empty_tip">Order No. keyword cannot be empty</string>
-    <string name="settings_order_length_invalid_tip">Order No. length must be a number greater than 0</string>
-    <string name="settings_test_fill_required_tip">Please fill in a valid Order No. keyword and length first</string>
-    <string name="test_result_not_parsed">Not parsed</string>
-    <string name="test_result_matched_parsed">Matched source and keyword\nOrder No.: %1$s\nCard No. (last 6 digits): %2$s\nAmount: %3$s\nAction: save record and call backend API</string>
-    <string name="test_result_matched_unparsed">Matched source and keyword, but Order No. not parsed\nAmount: %1$s\nAction: save local record and call backend API to save message\nReason: %2$s</string>
+    <!-- SettingsActivity test parse -->
+    <string name="test_result_matched_parsed">Matched mode: %1$s; Trade No.: %2$s; Card No.: %3$s; Amount: %4$s; Action: save record and call backend API</string>
+    <string name="test_result_amount_absent">not extracted</string>
+    <string name="test_result_matched_unparsed">Matched mode: %1$s, but Trade No. or Card No. not extracted; Reason: %2$s</string>
     <string name="test_result_unmatched">Not matched: %1$s</string>
 </resources>

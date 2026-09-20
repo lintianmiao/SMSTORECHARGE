@@ -8,7 +8,7 @@ import retrofit2.http.POST
 import retrofit2.http.Url
 
 /**
- * 后台接口地址在“设置”页面可配置，因此这里使用 @Url 传入完整地址，
+ * 后台接口地址固定来自 AppSettings 中的常量，因此这里使用 @Url 传入完整地址，
  * Retrofit 在使用绝对 URL 时会忽略 baseUrl。
  * 由于接口返回结构未知，直接拿原始 ResponseBody，在上层做通用解析。
  * 注意：后台接口（.do）通常期望表单参数（application/x-www-form-urlencoded），

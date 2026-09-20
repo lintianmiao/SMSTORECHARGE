@@ -17,7 +17,8 @@ import kotlinx.coroutines.launch
 /**
  * 设备号校验界面：
  * 1. APP 首次打开使用时会跳转到该页面，要求输入设备号。
- * 2. 调用后台接口 checkDeviceId.do 进行校验，返回 return_code 为 "SUCCESS" 时保存设备号并进入主界面。
+ * 2. 调用后台接口 checkDeviceIdValid.do 进行校验，返回 return_code 为 "SUCCESS" 时保存设备号，
+ *    并保存返回中的卖家ID与交易模式信息（seller_id + list），供短信/APP通知解析使用。
  * 3. 校验失败时提示错误消息，保持在当前输入界面，不会保存设备号，也不会启动短信/APP通知拦截功能。
  */
 class DeviceIdActivity : AppCompatActivity() {
@@ -58,7 +59,7 @@ class DeviceIdActivity : AppCompatActivity() {
         binding.pbChecking.visibility = View.VISIBLE
 
         lifecycleScope.launch {
-            val checkUrl = AppSettings.getCheckDeviceIdUrl(this@DeviceIdActivity)
+            val checkUrl = AppSettings.getCheckDeviceIdUrl()
             val result = try {
                 val response = RetrofitClient.apiService.checkDeviceId(
                     url = checkUrl,
@@ -74,6 +75,15 @@ class DeviceIdActivity : AppCompatActivity() {
 
             if (result.success) {
                 AppSettings.setDeviceId(this@DeviceIdActivity, deviceId)
+                // 校验成功时保存后台下发的卖家ID与交易模式（解析规则）；
+                // 若返回中未包含 list 字段，则保留本地已保存的交易模式
+                val payload = RechargeResultParser.parseTradeModes(result.rawResponse)
+                if (payload != null) {
+                    if (payload.sellerId.isNotBlank()) {
+                        AppSettings.setSellerId(this@DeviceIdActivity, payload.sellerId)
+                    }
+                    payload.modes?.let { AppSettings.setTradeModes(this@DeviceIdActivity, it) }
+                }
                 Toast.makeText(this@DeviceIdActivity, R.string.device_id_check_success, Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this@DeviceIdActivity, MainActivity::class.java))
                 finish()

@@ -4,10 +4,35 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
+
+    <!-- Message bubble: represents SMS and APP notifications -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M54,24 L82,54 L54,84 L26,54 Z" />
+        android:pathData="M25,25 L75,25 Q82,25 82,32 L82,58 Q82,65 75,65 L48,65 L35,78 L35,65 L25,65 Q18,65 18,58 L18,32 Q18,25 25,25 Z" />
+
+    <!-- Bubble text lines -->
+    <path
+        android:fillColor="#2962FF"
+        android:pathData="M31,38 L66,38 Q68,38 68,40 Q68,42 66,42 L31,42 Q29,42 29,40 Q29,38 31,38 Z" />
+    <path
+        android:fillColor="#2962FF"
+        android:pathData="M31,49 L57,49 Q59,49 59,51 Q59,53 57,53 L31,53 Q29,53 29,51 Q29,49 31,49 Z" />
+
+    <!-- Recharge card: represents card number generation and backend submission -->
+    <path
+        android:fillColor="#FF8A00"
+        android:pathData="M38,54 L83,54 Q90,54 90,61 L90,82 Q90,89 83,89 L38,89 Q31,89 31,82 L31,61 Q31,54 38,54 Z" />
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M40,50 h28 v8 h-28 Z" />
+        android:fillAlpha="0.9"
+        android:pathData="M35,64 L86,64 L86,70 L35,70 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.9"
+        android:pathData="M41,77 L56,77 Q58,77 58,79 Q58,81 56,81 L41,81 Q39,81 39,79 Q39,77 41,77 Z" />
+
+    <!-- Lightning bolt: represents fast automatic recharge processing -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M67,59 L57,75 L66,75 L61,88 L78,69 L68,69 Z" />
 </vector>

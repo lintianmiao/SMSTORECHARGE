@@ -8,13 +8,14 @@ import androidx.work.Data
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.myshequ.smsrecharge.data.SmsRecord
+import com.myshequ.smsrecharge.data.TradeMode
 import com.myshequ.smsrecharge.util.AppSettings
 import com.myshequ.smsrecharge.util.SmsParser
 import com.myshequ.smsrecharge.worker.SmsProcessWorker
 
 /**
- * 接收系统短信广播，快速完成来源判断、关键词过滤与交易单号解析（纯内存计算，不涉及 IO），
- * 命中来源和关键词后交给 WorkManager 异步完成入库；解析出交易单号才调用后台接口。
+ * 接收系统短信广播，按后台下发的交易模式（notify_type=0）规则快速完成来源判断与交易信息判定（纯内存计算，不涉及 IO），
+ * 命中某个交易模式后交给 WorkManager 异步完成入库；成功提取交易号与充值卡号才调用后台接口。
  * 若本机尚未绑定设备号（未完成首次使用校验），则不启动拦截消息功能，直接忽略短信。
  */
 class SmsReceiver : BroadcastReceiver() {
@@ -37,7 +38,7 @@ class SmsReceiver : BroadcastReceiver() {
         val address = messages.firstOrNull()?.originatingAddress ?: ""
         val receivedTime = messages.firstOrNull()?.timestampMillis ?: System.currentTimeMillis()
 
-        val result = SmsParser.parse(context, fullBody, address)
+        val result = SmsParser.parse(context, fullBody, address, TradeMode.NOTIFY_TYPE_SMS)
         if (!result.matched) {
             return
         }

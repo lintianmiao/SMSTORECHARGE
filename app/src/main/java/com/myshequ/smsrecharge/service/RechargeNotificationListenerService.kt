@@ -6,6 +6,7 @@ import androidx.work.Data
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.myshequ.smsrecharge.data.SmsRecord
+import com.myshequ.smsrecharge.data.TradeMode
 import com.myshequ.smsrecharge.util.AppSettings
 import com.myshequ.smsrecharge.util.SmsParser
 import com.myshequ.smsrecharge.worker.SmsProcessWorker
@@ -13,8 +14,8 @@ import com.myshequ.smsrecharge.worker.SmsProcessWorker
 /**
  * APP通知监听服务：
  * 1. 需要用户在系统“通知使用权/通知访问权限”页面手动授权。
- * 2. 读取通知标题、正文、长文本等内容，组合后复用 SmsParser 的同一套解析规则。
- * 3. 命中来源与关键词后交给 SmsProcessWorker 入库，并由后台接口保存消息。
+ * 2. 读取通知标题、正文、长文本等内容，按后台下发的交易模式（notify_type=1）规则解析。
+ * 3. 命中某个交易模式后交给 SmsProcessWorker 入库，并由后台接口保存消息。
  * 4. 若本机尚未绑定设备号（未完成首次使用校验），则不启动拦截消息功能，直接忽略通知。
  */
 class RechargeNotificationListenerService : NotificationListenerService() {
@@ -40,7 +41,7 @@ class RechargeNotificationListenerService : NotificationListenerService() {
 
         val appLabel = getAppLabel(sbn.packageName)
         val notificationSource = "$appLabel(${sbn.packageName})"
-        val result = SmsParser.parse(this, content, notificationSource)
+        val result = SmsParser.parse(this, content, notificationSource, TradeMode.NOTIFY_TYPE_APP)
         if (!result.matched) return
 
         val inputData = Data.Builder()

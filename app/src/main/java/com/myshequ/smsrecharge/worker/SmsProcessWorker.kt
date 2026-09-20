@@ -68,7 +68,7 @@ class SmsProcessWorker(appContext: Context, params: WorkerParameters) :
         )
         val id = dao.insert(record)
 
-        val apiUrl = AppSettings.getApiUrl(applicationContext)
+        val apiUrl = AppSettings.getApiUrl()
         val deviceId = AppSettings.getDeviceId(applicationContext)
         val result = try {
             val response = RetrofitClient.apiService.smsToRechargeCard(

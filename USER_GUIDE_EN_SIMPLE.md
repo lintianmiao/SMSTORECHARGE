@@ -22,26 +22,24 @@
 3. Enable notification access for this app in the system settings page.
 4. After authorization, the app can detect supported APP notifications.
 
-## 4. Configure Parsing Rules
+## 4. View Parsing Rules (Trade Modes)
 
-Open the “Settings” screen and configure:
+Parsing rules are configured on the backend and are delivered to the app automatically after the device ID is verified successfully.
 
-- Source whitelist.
-- Message content filter keywords.
-- Order No. Keyword.
-- Order No. Length.
-- Amount keyword.
-- Backend API URL.
-- Device ID Verification API URL.
+Open the “Settings” screen to:
 
-Tap “Save” after editing the settings.
+- View the mode name buttons in the “Trade Modes” section.
+- Tap a mode button to view its details below: Name, Notify Type, Trade Info Source, Trade Judge Rule, Trade No. Parse Rule 1/2, Card No. Parse Rule 1/2, and Amount Parse Rule 1/2.
+- The rules are read-only. To change them, contact the backend administrator, then rebind the device ID to sync.
 
 ## 5. Test Parsing
 
-1. Paste a real SMS or APP notification content in the test box.
-2. Tap “Test Parse”.
-3. Check whether the Order No., Card No., and Amount are parsed correctly.
-4. If parsing fails, check the source whitelist, keywords, Order No. keyword, and Order No. length.
+1. On the “Settings” screen, select the message type (SMS / APP Notification).
+2. Enter the sender number or APP name/package name in the “Source” box (optional).
+3. Paste a real SMS or APP notification content.
+4. Tap “Test Parse”.
+5. Check whether a trade mode is matched and whether the Order No., Card No., and Amount are parsed correctly (the Amount shows “not extracted” when empty).
+6. If parsing fails, check whether the selected message type is correct and whether the content matches the backend mode rules.
 
 ## 6. View Message Records
 

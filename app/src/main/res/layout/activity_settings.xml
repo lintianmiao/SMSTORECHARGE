@@ -60,144 +60,114 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/settings_source_label"
+                android:text="@string/settings_trade_modes_label"
                 android:textColor="@color/colorTextPrimary"
                 android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etSmsSources"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/bg_date_box"
-                android:padding="10dp"
-                android:inputType="text" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/settings_keywords_label"
-                android:textColor="@color/colorTextPrimary"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etKeywords"
+                android:id="@+id/tvTradeModesEmpty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:background="@drawable/bg_date_box"
                 android:padding="10dp"
-                android:inputType="text" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/settings_order_keyword_label"
-                android:textColor="@color/colorTextPrimary"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etOrderKeyword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
                 android:background="@drawable/bg_date_box"
-                android:padding="10dp"
-                android:inputType="text" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/settings_order_length_label"
-                android:textColor="@color/colorTextPrimary"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etOrderLength"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/bg_date_box"
-                android:padding="10dp"
-                android:inputType="number" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/settings_money_keyword_label"
-                android:textColor="@color/colorTextPrimary"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etMoneyKeyword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/bg_date_box"
-                android:padding="10dp"
-                android:inputType="text" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/settings_api_url_label"
-                android:textColor="@color/colorTextPrimary"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etApiUrl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/bg_date_box"
-                android:padding="10dp"
-                android:inputType="textUri" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/settings_check_device_id_url_label"
-                android:textColor="@color/colorTextPrimary"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etCheckDeviceIdUrl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/bg_date_box"
-                android:padding="10dp"
-                android:inputType="textUri" />
+                android:text="@string/settings_trade_modes_empty"
+                android:textColor="@color/colorTextSecondary"
+                android:visibility="gone" />
 
             <LinearLayout
+                android:id="@+id/layoutModeButtons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/tvModeInfoTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:text="@string/settings_mode_info_label"
+                android:textColor="@color/colorTextPrimary"
+                android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/btnSave"
-                    android:layout_width="0dp"
+            <LinearLayout
+                android:id="@+id/layoutModeInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_date_box"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/tvModeName"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/settings_save" />
+                    android:textColor="@color/colorTextPrimary" />
 
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="1dp" />
-
-                <Button
-                    android:id="@+id/btnResetDefault"
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tvModeNotifyType"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/settings_reset_default" />
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:id="@+id/tvModeSource"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:id="@+id/tvModeJudge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:id="@+id/tvModeTradeNo1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:id="@+id/tvModeTradeNo2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:id="@+id/tvModeCardNo1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:id="@+id/tvModeCardNo2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:id="@+id/tvModeMoney1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:id="@+id/tvModeMoney2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/colorTextPrimary" />
             </LinearLayout>
 
             <Button
@@ -227,6 +197,38 @@
                 android:text="@string/settings_test_parse"
                 android:textColor="@color/colorTextPrimary"
                 android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rgTestNotifyType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbTestSms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/source_sms" />
+
+                <RadioButton
+                    android:id="@+id/rbTestApp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/source_app" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/etTestSource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:hint="@string/settings_test_source_hint"
+                android:background="@drawable/bg_date_box"
+                android:padding="10dp"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/etTestSms"
